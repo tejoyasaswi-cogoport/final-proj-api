@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
-  resources :likes
-  resources :comments
-  resources :users
-  resources :categories
-  resources :articles
+  # resources :likes
+  # resources :comments
+  # resources :users
+  # resources :categories
+  # resources :articles
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # POST /signup --> Sign's up a new user
-  post 'signup', to: 'users#signup'
+  post 'signup', to: 'signup#signupuser'
+  # POST /login --> Logs in user into the website
+  post 'login', to: 'authentication#login'
 
 
 
   # POST /authenticate --> This authenticates whether the username, password are correct or not
-  post 'authenticate', to: 'authentication#authenticate'
   # GET /articles --> It shows all the articles
-  get '/article_all', to: 'articles#showall'
+  get 'articles', to: 'articles#showall'
   # POST /article --> Posts an article
   post 'article', to: 'articles#postarticle'
   # GET /:user_id/articles --> Get article by author
