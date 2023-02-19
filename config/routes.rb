@@ -14,12 +14,17 @@ Rails.application.routes.draw do
 
 
   # POST /authenticate --> This authenticates whether the username, password are correct or not
+
+  get '/articles/user/:user_id', to: 'articles#showarticlesbyuser'
+
   # GET /articles --> It shows all the articles
   get 'articles', to: 'articles#showall'
-  # POST /article --> Posts an article
-  post 'article', to: 'articles#postarticle'
-  # GET /:user_id/articles --> Get article by author
-  get '/:user_id/articles', to: 'articles#showpostbyid'
+  # POST /user/:user_name/createarticle --> Posts an article
+  post '/user/:user_name/createarticle', to: 'articles#postarticle'
+
+  put '/user/:article_id/editarticle', to: 'articles#editarticle'
+
+  delete '/user/:article_id/deletearticle', to: 'articles#deletearticle'
 
 
   
