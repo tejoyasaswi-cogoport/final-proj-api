@@ -22,8 +22,14 @@ class ArticlesController < ApplicationController
     end
 
     def editarticle
-        render json: Article.find(params[:article_id]).update(title: params[:title], description: params[:description], content: params[:content])
+        @article = Article.find(params[:article_id])
+        if @article.update(postparams)
+          render json: @article, status: :ok
+        else
+          render json: @article.errors, status: :unprocessable_entity
+        end
     end
+
     def deletearticle
         article = Article.find(params[:article_id])
         Article.delete(article)

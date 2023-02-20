@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   delete '/user/:article_id/deletearticle', to: 'articles#deletearticle'
 
 
-  
+  put '/user/:user_id/edituser', to: 'users#editusercred'
+
   # Defines the root path route ("/")
   # root "articles#index"
 end
