@@ -10,4 +10,12 @@ class AuthenticationController < ApplicationController
         render json: { error: command.errors }, status: :unauthorized
       end
     end
+
+    def logout
+      token = request.headers['Authorization']&.split(' ')&.last
+      if token.present?
+        user_id = JsonWebToken.decode(token)[:user_id]
+      end
+      head :no_content
+  end
    end
