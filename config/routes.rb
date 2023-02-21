@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   # POST /login --> Logs in user into the website
   post '/login', to: 'authentication#login'
   # DELETE /logout --> Logs out the users from website
-  delete '/logout', to: 'authentication#logout'
-
+  delete '/:user_id/logout', to: 'authentication#logout'
 
   # POST /authenticate --> This authenticates whether the username, password are correct or not
 

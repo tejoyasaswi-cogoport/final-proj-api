@@ -1,5 +1,6 @@
 class SignupController < ApplicationController
     skip_before_action :authenticate_request
+    protect_from_forgery with: :null_session
     def user_params
         params.required(:user).permit(:name, :designation, :email, :password, :password_confirmation)
     end
